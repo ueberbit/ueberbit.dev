@@ -1,12 +1,13 @@
 FROM wodby/php:8.1
 
-COPY --chown=1000:1000 ./ /var/www/html
+COPY --chown=1000:1000 ./ /app
 
-RUN chmod a+w /var/www/html/web/sites/default
-RUN mkdir -p /var/www/html/web/sites/default/files /var/www/html/web/sites/default/private
-RUN chmod 777 /var/www/html/web/sites/default/files /var/www/html/web/sites/default/private
+RUN chmod a+w /app/web/sites/default
+RUN mkdir -p /app/web/sites/default/files /app/web/sites/default/private
+RUN chmod 777 /app/web/sites/default/files /app/web/sites/default/private
 
-VOLUME [ "/var/www/html" ]
-WORKDIR /var/www/html
+VOLUME [ "/app" ]
+
+WORKDIR /app
 
 LABEL com.centurylinklabs.watchtower.lifecycle.post-update='./hooks/post-update.sh'
