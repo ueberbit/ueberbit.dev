@@ -52,7 +52,6 @@
                 "[web-root]/.eslintrc.json": false,
                 "[web-root]/.eslintignore": false,
                 "[web-root]/.csslintrc": false,
-                "[web-root]/.htaccess": false,
                 "[web-root]/.gitignore": false
             }
         },
