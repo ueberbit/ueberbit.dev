@@ -75,4 +75,4 @@ jobs:
         with:
           context: '.'
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ueberbit/uedev:preview
+          tags: ghcr.io/ueberbit/uedev:preview
