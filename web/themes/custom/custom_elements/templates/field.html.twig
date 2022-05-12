@@ -1,0 +1,100 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% set attributes = attributes.setAttribute('slot', field_name)  %}
+{% set attributes = attributes.setAttribute('label', label)  %}
+{% set attributes = attributes.setAttribute('label_hidden', label_hidden)  %}
+
+{% if field_type == 'text_with_summary' %}
+  {% set attributes = attributes.addClass('prose prose-slate lg:prose-lg')  %}
+{% endif %}
+
+<field-{{ variant }} {{ attributes }}>
+  {% for item in items %}
+
+    {# {% set item['attributes'] = item['attributes'].addClass('') %} #}
+
+    {% if item.attributes|length != 0 %}
+    <div{{ item.attributes }}>
+    {% endif %}
+
+    {{ item.content }}
+
+    {% if item.attributes|length != 0 %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</field-{{ variant }}>
+
+
+{#
+{% if label_hidden %}
+  {% if multiple %}
+    <field-{{ variant }} {{ attributes }}>
+      {% for item in items %}
+        <div{{ item.attributes }}>{{ item.content }}</div>
+      {% endfor %}
+    </field-{{ variant }}>
+  {% else %}
+    {% for item in items %}
+      <field-{{ variant }} {{ attributes }}>{{ item.content }}</field-{{ variant }}>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <field-{{ variant }} {{ attributes }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+      <div>
+    {% endif %}
+    {% for item in items %}
+      <div{{ item.attributes }}>{{ item.content }}</div>
+    {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
+  </field-{{ variant }}>
+{% endif %} #}

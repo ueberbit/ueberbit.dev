@@ -1,0 +1,49 @@
+# TailwindCss default breakpoints.
+
+custom_elements.xs:
+  label: xs
+  mediaQuery: '(min-width: 0px) and (max-width: 640px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+custom_elements.sm:
+  label: 'sm: @media (min-width: 640px)'
+  mediaQuery: 'all and (min-width: 640px) and (max-width: 767px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+
+custom_elements.md:
+  label: 'md: @media (min-width: 768px)'
+  mediaQuery: 'all and (min-width: 768) and (max-width: 1023px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+
+custom_elements.lg:
+  label: 'lg: @media (min-width: 1024px)'
+  mediaQuery: 'all and (min-width: 1024px) and (max-width: 1279px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x
+
+custom_elements.xl:
+  label: 'xl: @media (min-width: 1280px)'
+  mediaQuery: 'all and (min-width: 1280px) and (max-width: 1535px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 2x
+
+custom_elements.2xl:
+  label: '2xl: @media (min-width: 1536px)'
+  mediaQuery: 'all and (min-width: 1536px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 2x
