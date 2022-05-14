@@ -23,12 +23,19 @@ import {
 } from '@vue/runtime-core'
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
 import { hydrate, render } from 'vue'
+import { adoptStyles, baseStyles, supportsAdoptingStyleSheets } from '~/api/styles'
+
+export interface CustomComponentInternalInstance extends ComponentInternalInstance {
+  host: VueElement
+  shadowRoot: ShadowRoot
+  _setAttr: Function
+  _setProp: Function
+  _getProp: Function
+}
 
 export type VueElementConstructor<P = {}> = {
   new (initialProps?: Record<string, any>): VueElement & P
 }
-
-// const __DEV__ = import.meta.env.dev
 
 // defineCustomElement provides the same type inference as defineComponent
 // so most of the following overloads should be kept in sync w/ defineComponent.
@@ -124,13 +131,13 @@ export function defineCustomElement(options: {
 
 export function defineCustomElement(
   options: any,
-  hydrate?: RootHydrateFunction
+  hydate?: RootHydrateFunction
 ): VueElementConstructor {
   const Comp = defineComponent(options as any)
   class VueCustomElement extends VueElement {
     static def = Comp
     constructor(initialProps?: Record<string, any>) {
-      super(Comp, initialProps, hydrate)
+      super(Comp, initialProps, hydate)
     }
   }
 
@@ -157,7 +164,6 @@ export class VueElement extends BaseClass {
   private _connected = false
   private _resolved = false
   private _numberProps: Record<string, true> | null = null
-  private _styles?: HTMLStyleElement[]
 
   constructor(
     private _def: InnerComponentDef,
@@ -168,7 +174,7 @@ export class VueElement extends BaseClass {
     if (this.shadowRoot && hydrate) {
       hydrate(this._createVNode(), this.shadowRoot)
     } else {
-      if (__DEV__ && this.shadowRoot) {
+      if (import.meta.env.DEV && this.shadowRoot) {
         warn(
           `Custom element has pre-rendered declarative shadow root but is not ` +
             `defined as hydratable. Use \`defineSSRCustomElement\`.`
@@ -293,7 +299,15 @@ export class VueElement extends BaseClass {
     shouldUpdate = true
   ) {
     if (val !== this._props[key]) {
-      this._props[key] = val
+      if(key.match(/^\./)) {
+        try {
+          key = key.slice(1)
+          this._props[key] = JSON.parse(val)
+        } catch {}
+      } else {
+        this._props[key] = val
+      }
+
       if (shouldUpdate && this._instance) {
         this._update()
       }
@@ -317,20 +331,22 @@ export class VueElement extends BaseClass {
   private _createVNode(): VNode<any, any> {
     const vnode = createVNode(this._def, extend({}, this._props))
     if (!this._instance) {
-      vnode.ce = instance => {
+      // @ts-ignore
+      vnode.ce = (instance: CustomComponentInternalInstance) => {
         this._instance = instance
-        instance.isCE = true
-        // HMR
-        if (__DEV__) {
-          instance.ceReload = newStyles => {
-            // always reset styles
-            if (this._styles) {
-              this._styles.forEach(s => this.shadowRoot!.removeChild(s))
-              this._styles.length = 0
-            }
+        // instance.isCE = true
+        Object.assign(instance, {
+          host: this,
+          shadowRoot: this.shadowRoot,
+          isCE: true,
+          _setAttr: this._setAttr,
+          _setProp: this._setProp,
+          _getProp: this._getProp,
+        })
+
+        if(import.meta.env.DEV) {
+          instance.ceReload = (newStyles: any) => {
             this._applyStyles(newStyles)
-            // if this is an async component, ceReload is called from the inner
-            // component so no need to reload the async wrapper
             if (!(this._def as ComponentOptions).__asyncLoader) {
               // reload
               this._instance = null
@@ -364,17 +380,11 @@ export class VueElement extends BaseClass {
     return vnode
   }
 
-  private _applyStyles(styles: string[] | undefined) {
-    if (styles) {
-      styles.forEach(css => {
-        const s = document.createElement('style')
-        s.textContent = css
-        this.shadowRoot!.appendChild(s)
-        // record for HMR
-        if (__DEV__) {
-          ;(this._styles || (this._styles = [])).push(s)
-        }
-      })
-    }
+  private _applyStyles(styles: string[] = []) {
+    supportsAdoptingStyleSheets
+      ? adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')
+      : adoptStyles(this.shadowRoot!, [window.tw.styles], 'tailwind')
+    // @ts-expect-error
+    adoptStyles(this.shadowRoot!, [baseStyles, ...styles], this._def.__hmrId)
   }
 }

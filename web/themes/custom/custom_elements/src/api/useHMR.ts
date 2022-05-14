@@ -4,7 +4,7 @@ import { adoptStyles } from '~/api/styles'
 export function useHMR() {
   onUpdated(() => {
     const shadowRoot = getCurrentInstance()?.vnode?.el?.getRootNode()
-    const styles = Array.from(document.querySelectorAll('style')).find(el => el.innerHTML.includes('tailwind'))?.textContent
+    const styles = Array.from(document.querySelectorAll('style')).find(el => el.innerHTML.includes('/*unocss*/'))?.textContent
     styles && adoptStyles(shadowRoot, [styles], 'tailwind')
   })
 }

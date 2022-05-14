@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Abc from './Abc.vue'
 
 defineProps<{
   slot?: string,
@@ -8,17 +9,20 @@ defineProps<{
 </script>
 
 <template>
+  <Abc/>
+  <div class="bg-purple-600">
+    hi
+  </div>
   <slot name="header"></slot>
   <slot name="breadcrumb"></slot>
   <slot name="highlighted"></slot>
   <slot name="main"></slot>
-  <div class="text-red-400">hi there</div>
+  <slot>
+    hi
+  </slot>
 </template>
 
 <style>
-
-html {
-  background: red;
-}
 @unocss-placeholder;
+
 </style>
