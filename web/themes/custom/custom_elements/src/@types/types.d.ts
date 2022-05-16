@@ -4,15 +4,15 @@ declare global {
     replaceSync: Function
     __hmrId: string
   }
-
-  interface ShadowRoot {
+  interface RenderRoot {
     adoptedStyleSheets: Array<CSSStyleSheet>
   }
+
+  interface ShadowRoot extends RenderRoot {}
+  interface Document extends RenderRoot {}
   interface Window {
-    tw: {
-      styles: string
-      sheet: CSSStyleSheet
-    }
+    sheets: Record<string,CSSStyleSheet>
+    styles: Record<string,string>
     swup: any
   }
 

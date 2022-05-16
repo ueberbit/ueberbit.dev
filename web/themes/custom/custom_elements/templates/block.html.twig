@@ -28,15 +28,39 @@
  */
 #}
 
-{# <block-{{ plugin_id|replace({'_block': '', '_': '-'}) }} {{ attributes }}> #}
-<block-{{ variant }} {{ attributes }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
+{% set wrapper = wrapper|default(true) %}
+{% set title_attributes = title_attributes.setAttribute('slot', 'label') %}
+
+{% if wrapper %}
+<{{ tagname }} {{ attributes }}>
+{% endif %}
+
+  {% block title_prefix %}
+    {% if title_prefix %}
+    <div slot="prefix">
+      {{ title_prefix }}
+    </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block label %}
+    {% if label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+  {% endblock %}
+
+  {% block title_suffix %}
+    {% if title_suffix %}
+      <div slot="suffix">
+        {{ title_suffix }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
   {% block content %}
     {{ content }}
   {% endblock %}
-</block-{{ variant }}>
-{# </block-{{ plugin_id|replace({'_block': '', '_': '-'}) }}> #}
+
+{% if wrapper %}
+</{{ tagname }}>
+{% endif %}

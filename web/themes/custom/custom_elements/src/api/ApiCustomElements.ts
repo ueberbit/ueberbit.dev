@@ -168,6 +168,7 @@ export class VueElement extends BaseClass {
     if (this.shadowRoot && hydrate) {
       hydrate(this._createVNode(), this.shadowRoot)
     } else {
+      // @ts-expect-error
       if (__DEV__ && this.shadowRoot) {
         warn(
           `Custom element has pre-rendered declarative shadow root but is not ` +
@@ -317,11 +318,14 @@ export class VueElement extends BaseClass {
   private _createVNode(): VNode<any, any> {
     const vnode = createVNode(this._def, extend({}, this._props))
     if (!this._instance) {
+      // @ts-expect-error
       vnode.ce = instance => {
         this._instance = instance
         instance.isCE = true
         // HMR
+        // @ts-expect-error
         if (__DEV__) {
+          // @ts-expect-error
           instance.ceReload = newStyles => {
             // always reset styles
             if (this._styles) {
@@ -371,6 +375,7 @@ export class VueElement extends BaseClass {
         s.textContent = css
         this.shadowRoot!.appendChild(s)
         // record for HMR
+        // @ts-expect-error
         if (__DEV__) {
           ;(this._styles || (this._styles = [])).push(s)
         }

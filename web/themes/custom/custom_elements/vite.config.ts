@@ -53,12 +53,16 @@ export default defineConfig({
       },
     },
     {
-      name: 'abc',
+      name: 'vite-uno-css-layer',
       transform(src, id) {
         if (/\__uno.css$/.test(id)) {
           console.log(src)
           return {
-            code: `/*unocss*/\n${src}`,
+            code: `
+              @layer uno {
+                ${src}
+              }
+            `,
             map: null
           }
         }
@@ -76,7 +80,10 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vue.runtime.esm-browser.prod': ['vue'],
-        }
+        },
+        entryFileNames: `[name].js`,
+        chunkFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`
       }
     },
   },

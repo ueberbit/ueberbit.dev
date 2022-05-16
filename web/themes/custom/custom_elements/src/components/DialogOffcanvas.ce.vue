@@ -22,7 +22,7 @@ defineProps<{
   </slot>
 </template>
 
-<style>
-@unocss-placeholder;
+<style lang="postcss">
+@unocss-placeholder
 
 </style>

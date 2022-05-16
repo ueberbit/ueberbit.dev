@@ -4,6 +4,12 @@
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://ueberbit.de",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
     "require": {
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.1",
@@ -14,6 +20,7 @@
         "drupal/gin": "^3.0@beta",
         "drupal/gin_login": "^1.2",
         "drupal/gin_toolbar": "^1.0@beta",
+        "drupal/twig_tweak": "^3.1",
         "drush/drush": "^11.0"
     },
     "conflict": {

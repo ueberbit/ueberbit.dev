@@ -1,11 +1,10 @@
 import { defineCustomElement } from '~/api/ApiCustomElements'
 // import { defineCustomElement } from 'vue'
 import { hyphenate } from '@vue/shared'
-import '@unocss/reset/tailwind.css'
-import 'uno.css'
 
-import './styles/style.css'
+// import './styles/style.css'
 import '../templates/off-canvas-page-wrapper.html.twig'
+
 
 // import './styles/style.css'
 

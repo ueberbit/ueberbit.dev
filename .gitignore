@@ -33,3 +33,4 @@ self.site.yml
 
 # Generated Files
 /**/node_modules
+/**/dist

@@ -1,5 +1,1 @@
-/* @unocss-placeholder; */
-
-html {
-  /* background: red; */
-}
+/* @layer reset, uno; */

@@ -11,6 +11,6 @@ defineProps<{
   <h1 class="text-blue-400">Why Hello there</h1>
 </template>
 
-<style>
-@unocss-placeholder;
+<style lang="postcss">
+@unocss-placeholder
 </style>

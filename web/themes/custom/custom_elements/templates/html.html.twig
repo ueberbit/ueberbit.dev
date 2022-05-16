@@ -30,6 +30,10 @@
       <title>{{ head_title|safe_join(' | ') }}</title>
       <meta name="description" content="Vue Custom Elements in Drupal">
 
+      <style>
+        @layer reset, uno;
+      </style>
+
       {# <link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/custom_elements/dist/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/themes/custom/custom_elements/dist/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="/themes/custom/custom_elements/dist/favicon-16x16.png">
@@ -49,9 +53,9 @@
       {# dev end #}
 
       {# prod start header #}
-      {# <link rel="preload" href="/themes/custom/custom_elements/dist/style.css" as="style">
+      {# <link rel="preload" href="/themes/custom/custom_elements/dist/main.css" as="style">
       <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/vue.runtime.esm-browser.prod.js"></script>
-      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/custom_elements.es.js"></script> #}
+      <script type="module" async="" crossorigin="" src="/themes/custom/custom_elements/dist/main.js"></script> #}
       {# prod end header #}
 
       {# Add loading="eager" to images in viewport and loading="lazy" to every other #}
@@ -67,7 +71,7 @@
       {{ page_bottom }}
 
       {# prod start body #}
-      {# <link rel='stylesheet' title="tailwind" href='/themes/custom/custom_elements/dist/style.css'> #}
+      {# <link rel='stylesheet' title="tailwind" href='/themes/custom/custom_elements/dist/main.css'> #}
       {# prod end body #}
 
       <js-bottom-placeholder token="{{ placeholder_token|raw }}">

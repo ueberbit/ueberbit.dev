@@ -48,7 +48,7 @@ export const autoImportUnoPlaceholder: Plugin = {
         s.appendLeft(s.length(), `<style>@unocss-placeholder</style>`)
       }
 
-      console.log(s.toString())
+      // console.log(s.toString())
 
       return {
         code: s.toString(),

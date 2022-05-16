@@ -1,0 +1,26 @@
+<?php
+
+define('THEME_ROOT', dirname(__FILE__));
+
+/**
+ * FE Asset loading optimization.
+ */
+function custom_elements_page_attachments_alter(array &$attachments): void {
+  // $inlineCss = '/* windicss layer base */';
+  // $inlineCss .= @file_get_contents(THEME_ROOT . "/dist/style.css");
+  // $inlineCss = '';
+  // $attachments['#attached']['html_head'][] = [
+  //   [
+  //     '#type' => 'inline_template',
+  //     '#template' => '<style>{{css|raw}}</style>',
+  //     '#context' => [
+  //       'css' => $inlineCss,
+  //     ],
+  //   ],
+  //   'windicss',
+  // ];
+}
+
+// $tagname = str_replace('--', '-', basename($template_file));
+// $tagname = str_replace(["-{$variables['theme_hook_original']}", '.html.twig'],  '', $tagname);
+// $variables['tagname'] = $tagname;
