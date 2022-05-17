@@ -10,4 +10,5 @@ VOLUME [ "/app" ]
 
 WORKDIR /app
 
+LABEL com.centurylinklabs.watchtower.lifecycle.pre-update='./hooks/pre-update.sh'
 LABEL com.centurylinklabs.watchtower.lifecycle.post-update='./hooks/post-update.sh'
