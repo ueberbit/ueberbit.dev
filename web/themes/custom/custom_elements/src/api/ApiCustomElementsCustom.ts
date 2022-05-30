@@ -131,13 +131,13 @@ export function defineCustomElement(options: {
 
 export function defineCustomElement(
   options: any,
-  hydate?: RootHydrateFunction
+  hydrate?: RootHydrateFunction
 ): VueElementConstructor {
   const Comp = defineComponent(options as any)
   class VueCustomElement extends VueElement {
     static def = Comp
     constructor(initialProps?: Record<string, any>) {
-      super(Comp, initialProps, hydate)
+      super(Comp, initialProps, hydrate)
     }
   }
 
@@ -164,6 +164,7 @@ export class VueElement extends BaseClass {
   private _connected = false
   private _resolved = false
   private _numberProps: Record<string, true> | null = null
+  private _styles?: HTMLStyleElement[]
 
   constructor(
     private _def: InnerComponentDef,
@@ -380,6 +381,10 @@ export class VueElement extends BaseClass {
     return vnode
   }
 
+  /**
+   * Patch applyStyles method to support adopted Stylesheets.
+   * @param styles
+   */
   private _applyStyles(styles: string[] = []) {
     supportsAdoptingStyleSheets
       ? adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')

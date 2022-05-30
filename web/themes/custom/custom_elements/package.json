@@ -7,18 +7,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@unocss/cli": "^0.33.4",
-    "@unocss/reset": "^0.33.2",
+    "@unocss/cli": "^0.34.1",
+    "@unocss/reset": "^0.34.1",
     "@vue/runtime-core": "^3.2.33",
     "@vue/shared": "^3.2.33",
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@unocss/inspector": "^0.33.2",
+    "@unocss/inspector": "^0.34.1",
     "@vitejs/plugin-vue": "^2.3.3",
-    "unocss": "^0.33.2",
+    "unocss": "^0.34.1",
     "vite": "^2.9.9",
-    "vite-plugin-mkcert": "^1.6.0",
+    "vite-plugin-mkcert": "^1.6.4",
     "vue-tsc": "^0.34.7"
   }
 }

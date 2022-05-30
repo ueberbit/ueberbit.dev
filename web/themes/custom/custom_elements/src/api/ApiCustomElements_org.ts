@@ -23,19 +23,12 @@ import {
 } from '@vue/runtime-core'
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
 import { hydrate, render } from 'vue'
-import { adoptStyles, baseStyles, supportsAdoptingStyleSheets } from '~/api/styles'
-
-export interface CustomComponentInternalInstance extends ComponentInternalInstance {
-  host: VueElement
-  renderRoot: ShadowRoot
-  _setAttr: Function
-  _setProp: Function
-  _getProp: Function
-}
 
 export type VueElementConstructor<P = {}> = {
   new (initialProps?: Record<string, any>): VueElement & P
 }
+
+// const __DEV__ = import.meta.env.dev
 
 // defineCustomElement provides the same type inference as defineComponent
 // so most of the following overloads should be kept in sync w/ defineComponent.
@@ -164,6 +157,7 @@ export class VueElement extends BaseClass {
   private _connected = false
   private _resolved = false
   private _numberProps: Record<string, true> | null = null
+  private _styles?: HTMLStyleElement[]
 
   constructor(
     private _def: InnerComponentDef,
@@ -300,15 +294,7 @@ export class VueElement extends BaseClass {
     shouldUpdate = true
   ) {
     if (val !== this._props[key]) {
-      // Set attributes prefixed with dot as prop.
-      if(key.match(/^\./)) {
-        try {
-          key = key.slice(1)
-          this._props[key] = JSON.parse(val)
-        } catch {}
-      } else {
-        this._props[key] = val
-      }
+      this._props[key] = val
       if (shouldUpdate && this._instance) {
         this._update()
       }
@@ -333,20 +319,19 @@ export class VueElement extends BaseClass {
     const vnode = createVNode(this._def, extend({}, this._props))
     if (!this._instance) {
       // @ts-expect-error
-      vnode.ce = (instance: CustomComponentInternalInstance) => {
+      vnode.ce = instance => {
         this._instance = instance
-        Object.assign(instance, {
-          host: this,
-          renderRoot: this.shadowRoot,
-          isCE: true,
-          _setAttr: this._setAttr,
-          _setProp: this._setProp,
-          _getProp: this._getProp,
-        })
+        instance.isCE = true
         // HMR
         // @ts-expect-error
         if (__DEV__) {
+          // @ts-expect-error
           instance.ceReload = newStyles => {
+            // always reset styles
+            if (this._styles) {
+              this._styles.forEach(s => this.shadowRoot!.removeChild(s))
+              this._styles.length = 0
+            }
             this._applyStyles(newStyles)
             // if this is an async component, ceReload is called from the inner
             // component so no need to reload the async wrapper
@@ -383,18 +368,18 @@ export class VueElement extends BaseClass {
     return vnode
   }
 
-  /**
-   * Patch applyStyles method to support adopted Stylesheets.
-   * @param styles
-   */
-  private _applyStyles(styles: string[] = []) {
-    // supportsAdoptingStyleSheets
-    //   ? adoptStyles(this.shadowRoot!, window.tw.sheet, 'tailwind')
-    //   : adoptStyles(this.shadowRoot!, [window.tw.styles], 'tailwind')
-
-    adoptStyles(this.shadowRoot!, [window.styles.reset], 'reset')
-    adoptStyles(this.shadowRoot!, [baseStyles], 'base')
-    // @ts-expect-error
-    adoptStyles(this.shadowRoot!, [...styles], this._def.__hmrId)
+  private _applyStyles(styles: string[] | undefined) {
+    if (styles) {
+      styles.forEach(css => {
+        const s = document.createElement('style')
+        s.textContent = css
+        this.shadowRoot!.appendChild(s)
+        // record for HMR
+        // @ts-expect-error
+        if (__DEV__) {
+          ;(this._styles || (this._styles = [])).push(s)
+        }
+      })
+    }
   }
 }

@@ -44,7 +44,7 @@ export default defineConfig({
       name: 'twig',
       transform(src, id) {
         if (/\.(twig)$/.test(id)) {
-          console.log(id)
+          // console.log(id)
           return {
             code: '',
             map: null // provide source map if available
@@ -71,10 +71,6 @@ export default defineConfig({
     mkcert()
   ],
   build: {
-    // lib: {
-    //   entry: 'src/main.ts',
-    //   formats: ['es'],
-    // },
     rollupOptions: {
       input: 'src/main.ts',
       output: {

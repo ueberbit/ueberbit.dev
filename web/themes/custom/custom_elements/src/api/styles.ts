@@ -24,7 +24,7 @@ export const adoptStyles = (
     return;
   }
 
-  const css = styles.join('');
+  const css = styles.join('').replace(/\\\\/g, '\\')
 
   if (supportsAdoptingStyleSheets) {
     const sheets = renderRoot.adoptedStyleSheets || [];
@@ -69,16 +69,18 @@ export const adoptStyles = (
 };
 
 export const baseStyles = `
-  :host {
-    box-sizing: border-box;
-    display: block;
-  }
-  :host *,
-  :host *::before,
-  :host *::after {
-    box-sizing: inherit;
-  }
-  [hidden] {
-    display: none !important;
+  @layer base {
+    :host {
+      box-sizing: border-box;
+      display: block;
+    }
+    :host *,
+    :host *::before,
+    :host *::after {
+      box-sizing: inherit;
+    }
+    [hidden] {
+      display: none !important;
+    }
   }
 `;
