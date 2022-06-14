@@ -1,0 +1,20 @@
+uuid: b16e208c-4cbd-43ee-8186-ed5c4c634937
+langcode: en
+status: true
+dependencies:
+  theme:
+    - ce
+_core:
+  default_config_hash: ItFhhiUOoeR7oIq73ZaCV7PAYrOwXZ-9fazMzF5DJXM
+id: ce_page_title
+theme: ce
+region: content
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }
