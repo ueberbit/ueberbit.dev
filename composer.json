@@ -20,8 +20,13 @@
         "drupal/gin": "^3.0@beta",
         "drupal/gin_login": "^1.2",
         "drupal/gin_toolbar": "^1.0@beta",
+        "drupal/rest_menu_items": "^3.0",
+        "drupal/restui": "^1.20",
         "drupal/twig_tweak": "^3.1",
         "drush/drush": "^11.0"
+    },
+    "require-dev": {
+        "cweagans/composer-patches": "^1.7"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -33,10 +38,19 @@
         "allow-plugins": {
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
-            "drupal/core-project-message": true
+            "drupal/core-project-message": true,
+            "cweagans/composer-patches": true
         }
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "Add custom element tagname variable to templates.": "patches/custom_elements_tagname.patch",
+                "Add open in vscode link": "patches/vscode_link.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"

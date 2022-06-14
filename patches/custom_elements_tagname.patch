@@ -1,0 +1,14 @@
+diff --git a/core/themes/engines/twig/twig.engine b/core/themes/engines/twig/twig.engine
+index bcc984a02e..81558ada6a 100644
+--- a/core/themes/engines/twig/twig.engine
++++ b/core/themes/engines/twig/twig.engine
+@@ -45,6 +45,9 @@ function twig_extension() {
+ function twig_render_template($template_file, array $variables) {
+   /** @var \Twig\Environment $twig_service */
+   $twig_service = \Drupal::service('twig');
++  $tagname = str_replace('--', '-', basename($template_file));
++  $tagname = (isset($variables['tagname_prefix']) ? $variables['tagname_prefix'] . '-' : '') . str_replace(["-{$variables['theme_hook_original']}", '.html.twig'],  '', $tagname);
++  $variables['tagname'] = $tagname;
+   $output = [
+     'debug_prefix' => '',
+     'debug_info' => '',

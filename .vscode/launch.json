@@ -17,9 +17,6 @@
       "name": "debug 9000",
       "type": "php",
       "request": "launch",
-      "pathMappings": {
-        "/Sites/uedev.localhost": "${workspaceFolder}"
-      },
       "port": 9000
     },
   ]
