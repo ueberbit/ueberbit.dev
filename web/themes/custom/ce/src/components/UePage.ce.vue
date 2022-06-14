@@ -3,15 +3,18 @@ import Menu from './Menu.vue'
 
 defineProps<{
   class?: string
-  base_path?: string
-  logged_in?: boolean
-  is_admin?: boolean
+  basePath?: string
+  loggedIn?: boolean
+  isAdmin?: boolean
+  isFront?: boolean
 }>()
 
 </script>
 
 <template>
-  <Menu />
+  <header role="banner">
+    <Menu />
+  </header>
   <div class="bg-purple-300">
     hi
   </div>

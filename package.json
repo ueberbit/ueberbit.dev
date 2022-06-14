@@ -1,17 +1,106 @@
 {
   "name": "ueberbit.dev",
   "version": "0.0.0",
-  "description": "",
+  "description": "UEBERBIT Dev webpage",
+  "author": {
+    "name": "UEBERBIT GmbH",
+    "url": "https://ueberbit.de"
+  },
+  "contributors": [
+    {
+      "name": "Willi Woldt",
+      "email": "willi.woldt@ueberbit.de"
+    }
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "git config core.hooksPath ./hooks/git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.5.4"
+    "@antfu/eslint-config": "^0.25.1",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "lint-staged": "^13.0.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-property-sort-order-smacss": "^9.0.0",
+    "stylelint-config-recommended": "^8.0.0",
+    "stylelint-order": "^5.0.0",
+    "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@types/node": "^17.0.32"
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@types/node": "^17.0.42",
+    "devmoji": "^2.3.0"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-config-property-sort-order-smacss",
+      "stylelint-config-prettier"
+    ],
+    "plugins": [
+      "stylelint-order"
+    ],
+    "rules": {
+      "order/order": [
+        "custom-properties",
+        "declarations"
+      ],
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "tailwind",
+            "apply",
+            "variants",
+            "responsive",
+            "screen",
+            "layer",
+            "import-glob",
+            "unocss-placeholder"
+          ]
+        }
+      ],
+      "function-no-unknown": [
+        true,
+        {
+          "ignoreFunctions": [
+            "theme"
+          ]
+        }
+      ],
+      "declaration-block-trailing-semicolon": null,
+      "no-descending-specificity": null
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "@antfu",
+      "eslint-config-prettier"
+    ],
+    "rules": {
+      "react/no-unknown-property": "off"
+    },
+    "ignorePatterns": [
+      "**/*.js",
+      "**/*.mjs",
+      "**/ApiCustomElements.ts"
+    ]
+  },
+  "lint-staged": {
+    "web/themes/custom/**/*.{ts,js,jsx,tsx,vue}": "pnpm exec eslint --cache --fix --ignore-path .gitignore",
+    "web/themes/custom/**/*.css": "pnpm exec stylelint --fix",
+    "web/themes/custom/**/*.{php,module,inc,install,test,profile,theme}": "./vendor/bin/phpcbf --standard=./.vscode/ruleset.xml",
+    "web/modules/custom/**/*.{php,module,inc,install,test,profile}": "./vendor/bin/phpcbf --standard=./vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml --ignore=web/modules/contrib"
   }
 }

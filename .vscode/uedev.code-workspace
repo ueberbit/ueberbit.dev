@@ -25,6 +25,11 @@
       "vendor": true
     },
 
+    "prettier.enable": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+
     /* General Editor Settings */
     "editor.autoIndent": "advanced",
     "editor.insertSpaces": true,
@@ -36,6 +41,13 @@
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "css.validate": false,
+
+    "explorer.fileNesting.patterns": {
+      "tsconfig.json": "tsconfig.*.json",
+      "package.json": "package-lock.json, yarn.lock, .node-version, pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
+      "composer.json": "composer.lock, .php-version",
+      ".editorconfig": ".gitignore, .gitattributes",
+    },
 
     /* File associations */
     "files.associations": {

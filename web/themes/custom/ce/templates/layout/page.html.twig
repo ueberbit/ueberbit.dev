@@ -47,15 +47,15 @@
 #}
 
 {% set attributes = attributes|default(create_attribute()) %}
-{% set attributes = attributes.setAttribute('base_path', base_path) %}
-{% set attributes = attributes.setAttribute('is_front', is_front) %}
-{% set attributes = attributes.setAttribute('logged_in', logged_in) %}
-{% set attributes = attributes.setAttribute('is_admin', is_admin) %}
+{% set attributes = attributes.setAttribute('basePath', base_path) %}
+{% set attributes = attributes.setAttribute('isFront', is_front) %}
+{% set attributes = attributes.setAttribute('loggedIn', logged_in) %}
+{% set attributes = attributes.setAttribute('isAdmin', is_admin) %}
 
 <{{ tagname }} {{ attributes }}>
-  <header role="banner" slot="header" class="bg-red-100">
+  {# <header role="banner" slot="header" class="bg-red-100">
     {{ page.header }}
-  </header>
+  </header> #}
 
   {{ page.breadcrumb }}
 

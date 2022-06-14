@@ -39,7 +39,7 @@
       {% include "@ce/misc/img-loading.js" %}
     </script>
 
-    {{ block("head", "@ce/../dist/index.twig") }}
+    {{ block("head", "@ce/../dist/index.html") }}
 
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
@@ -55,7 +55,7 @@
 
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
 
-    {{ block("body", "@ce/../dist/index.twig") }}
+    {{ block("body", "@ce/../dist/index.html") }}
 
   </body>
 </html>

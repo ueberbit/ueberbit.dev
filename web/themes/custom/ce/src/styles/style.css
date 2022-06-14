@@ -3,3 +3,7 @@
 :not(:defined) {
   display: block;
 }
+
+html {
+  @apply bg-[#F7F7F7];
+}

@@ -1,9 +1,9 @@
 export {}
 declare global {
-  var Drupal: Drupal
-  var drupalSettings: Drupal.DrupalSettings
+  const Drupal: Drupal
+  const drupalSettings: Drupal.DrupalSettings
 
-  interface Array<T> {
+  interface Array {
     at(index: number): any
   }
 
@@ -65,7 +65,7 @@ declare global {
   }
 }
 
-declare module Drupal {
+declare namespace Drupal {
   // Todo.
   interface Ajax {}
   // Todo.
@@ -81,7 +81,7 @@ declare module Drupal {
     settings: object,
     trigger: string
   ) => void
-  type Behavior = {
+  interface Behavior {
     attach?: BehaviorAttach
     detach?: BehaviorDetach
   }
@@ -96,7 +96,7 @@ declare module Drupal {
   }
 }
 
-declare module Drupal.Ajax {
+declare namespace Drupal.Ajax {
   interface ElementSettings {
     url: string
     event?: string | null

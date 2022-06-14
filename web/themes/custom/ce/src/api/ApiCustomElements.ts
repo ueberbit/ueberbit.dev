@@ -23,7 +23,7 @@ import {
 } from '@vue/runtime-core'
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
 import { hydrate, render } from 'vue'
-import { adoptStyles, baseStyles, supportsAdoptingStyleSheets } from '~/api/styles'
+import { adoptStyles, baseStyles } from '~/api/styles'
 import { reset } from '~/api/uno'
 
 export interface CustomComponentInternalInstance extends ComponentInternalInstance {

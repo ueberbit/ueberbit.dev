@@ -34,3 +34,5 @@ self.site.yml
 # Generated Files
 /**/node_modules
 /**/dist
+.eslintcache
+.pnpm-debug.log

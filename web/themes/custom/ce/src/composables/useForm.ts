@@ -1,5 +1,6 @@
-import { getCurrentInstance, onMounted, onUnmounted, Ref, ref } from 'vue'
-import { CustomComponentInternalInstance } from '~/api/ApiCustomElements'
+import type { Ref} from 'vue';
+import { getCurrentInstance, onMounted, onUnmounted, ref } from 'vue'
+import type { CustomComponentInternalInstance } from '~/api/ApiCustomElements'
 
 type UeInput = HTMLInputElement | HTMLButtonElement | HTMLTextAreaElement | HTMLSelectElement | undefined
 
@@ -7,7 +8,6 @@ export const useForm = (el: Ref<UeInput>) => {
   const instance = getCurrentInstance() as CustomComponentInternalInstance
   const host = instance.host
   const form = ref<HTMLFormElement|null>(null)
-  const input = ref<HTMLInputElement|null>(null)
   form.value = host.closest('form')
 
   const options = {

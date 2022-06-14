@@ -1,12 +1,12 @@
+import path from 'path'
 import { defineConfig } from 'vite'
 import { presetAttributify, presetUno } from 'unocss'
 import vue from '@vitejs/plugin-vue'
-// @ts-ignore
-import { ceStyles, autoImportUnoPlaceholder, scanTwig, unoCascadeLayer, transformHTML } from './src/api/vite-plugins'
 import mkcert from 'vite-plugin-mkcert'
 import Unocss from 'unocss/vite'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
-import path from 'path'
+import transformerDirective from '@unocss/transformer-directives'
+import { ceStyles, scanTwig, transformHTML, unoCascadeLayer } from './src/api/vite-plugins'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,6 +28,7 @@ export default defineConfig({
       ],
       transformers: [
         transformerVariantGroup(),
+        transformerDirective()
       ],
     }),
     Unocss({
@@ -37,6 +38,7 @@ export default defineConfig({
       ],
       transformers: [
         transformerVariantGroup(),
+        transformerDirective()
       ],
       include: [/\.html.twig$/, /\.ce.vue$/]
     }),

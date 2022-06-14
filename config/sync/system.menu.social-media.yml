@@ -1,0 +1,8 @@
+uuid: 237e2b72-2eb1-4c88-981d-fee2d4aba39f
+langcode: en
+status: true
+dependencies: {  }
+id: social-media
+label: 'Social Media'
+description: 'Manage Social Media Links'
+locked: false

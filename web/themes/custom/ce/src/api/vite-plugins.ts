@@ -1,6 +1,6 @@
+import { readFileSync, writeFileSync } from 'fs'
 import MagicString from 'magic-string'
 import type { Plugin, ResolvedConfig } from 'vite'
-import { writeFileSync, readFileSync } from 'fs'
 
 /**
  * Autoimport useStyles composable for adopting styles.
@@ -113,7 +113,6 @@ export const transformHTML = (): Plugin => {
       config = resolvedConfig
     },
     transformIndexHtml(html) {
-      console.log('asdasds')
       const code = html
         .replace(/<head>/,`{% block head %}`)
         .replace(/<body>/,`{% block body %}`)

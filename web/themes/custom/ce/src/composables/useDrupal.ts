@@ -9,7 +9,7 @@ export interface MenuItem {
 
 export const useMenu = (id: string) => {
   const menu = ref<Array<MenuItem>>()
-  fetch(`${location.origin}/api/menu_items/main`)
+  fetch(`${location.origin}/api/menu_items/${id}`)
     .then(async (fetchResponse) => {
       const response = await fetchResponse
       menu.value = await response.json()

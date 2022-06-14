@@ -1,4 +1,4 @@
-import { ref, onMounted, getCurrentInstance } from 'vue'
+import { getCurrentInstance, onMounted, ref } from 'vue'
 import { adoptStyles } from './styles'
 
 /**
@@ -6,22 +6,28 @@ import { adoptStyles } from './styles'
  * To fix this the styles are applied to the renderRoot.
  */
 export const useStyles = () => {
-  const renderRoot = ref<ShadowRoot|Document>()
+  const renderRoot = ref<ShadowRoot | Document>()
 
   onMounted(() => {
     const instance = getCurrentInstance()
-    if (!instance) return
+    if (!instance) {
+      return
+    }
     // debugger
     renderRoot.value = instance.vnode?.el?.getRootNode()
-    if (!renderRoot.value) return
+    if (!renderRoot.value) {
+      return
+    }
 
-    // @ts-expect-error
-    if(!instance.type.styles) return
-    // @ts-expect-error
+    // @ts-expect-error custom api
+    if (!instance.type.styles) {
+      return
+    }
+    // @ts-expect-error custom api
     const styles = instance.type.styles.join('')
 
     // Use __hmrId as UUID for replacing styles, instead of adding new ones every time.
-    // @ts-expect-error
+    // @ts-expect-error custom api
     const __hmrId = instance.type.__hmrId
 
     /**

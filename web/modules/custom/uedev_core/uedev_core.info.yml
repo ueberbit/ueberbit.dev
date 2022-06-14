@@ -1,0 +1,5 @@
+name: UEDEV Core
+type: module
+description: Core module for ueberbit.dev
+package: uedev
+core_version_requirement: ^9 || ^10

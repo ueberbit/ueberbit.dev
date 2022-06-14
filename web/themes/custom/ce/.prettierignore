@@ -1,0 +1,6 @@
+# Ignore any path/file using .gitignore syntax, ie:
+
+node_modules/
+vendor/
+dist/
+src/api/ApiCustomElements.ts

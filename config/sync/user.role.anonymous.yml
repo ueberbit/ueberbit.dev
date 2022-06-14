@@ -9,6 +9,7 @@ dependencies:
     - comment
     - contact
     - filter
+    - media
     - rest
     - search
     - system
@@ -25,3 +26,4 @@ permissions:
   - 'restful get rest_menu_item'
   - 'search content'
   - 'use text format restricted_html'
+  - 'view media'
