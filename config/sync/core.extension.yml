@@ -14,6 +14,7 @@ module:
   comment: 0
   config: 0
   contact: 0
+  content_moderation: 0
   ctools: 0
   datetime: 0
   dblog: 0
@@ -39,6 +40,7 @@ module:
   path: 0
   path_alias: 0
   rdf: 0
+  responsive_image: 0
   rest: 0
   rest_menu_items: 0
   restui: 0
@@ -56,6 +58,7 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  workflows: 0
   pathauto: 1
   views: 10
   minimal: 1000
