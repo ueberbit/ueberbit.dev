@@ -67,7 +67,7 @@
     "phpsab.snifferMode": "onType",
     "phpsab.debug": true,
 
-    /* Yarn */
+    /* pnpm */
     "npm.packageManager": "pnpm",
     "eslint.packageManager": "pnpm",
 

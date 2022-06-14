@@ -4,7 +4,22 @@ This website will become a collection of communication and recruiting tools. It 
 
 ## Setup
 
+### Drupal
+
 Install drupal site:
 ```sh
 drush si --existing-config
+```
+
+### Custom Elements Theme
+
+```bash
+# install dependencies.
+pnpm i
+
+# prod build.
+pnpm build
+
+# dev build.
+pnpm dev
 ```
