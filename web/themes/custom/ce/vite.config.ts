@@ -6,7 +6,7 @@ import mkcert from 'vite-plugin-mkcert'
 import Unocss from 'unocss/vite'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 import transformerDirective from '@unocss/transformer-directives'
-import { ceStyles, scanTwig, transformHTML, unoCascadeLayer } from './src/api/vite-plugins'
+import { ceStyles, scanTwig, transformHTML, unoCascadeLayer, unoPlaceholder } from './src/api/vite-plugins'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,6 +19,7 @@ export default defineConfig({
   plugins: [
     // autoImportUnoPlaceholder,
     transformHTML(),
+    unoPlaceholder,
     ceStyles,
     Unocss({
       mode: 'shadow-dom',

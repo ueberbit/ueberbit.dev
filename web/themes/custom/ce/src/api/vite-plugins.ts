@@ -67,6 +67,28 @@ export const autoImportUnoPlaceholder: Plugin = {
 }
 
 /**
+ * Automagically insert unocss placeholder.
+ */
+export const unoPlaceholder: Plugin = {
+  name: 'vite-plugin-uno-placeholder',
+  enforce: 'pre',
+  transform(code: string, id: string) {
+    if (/vue$/.test(id)) {
+      const s = new MagicString(code)
+      s.replace('@unocss-placeholder;', '@unocss-placeholder')
+
+      return {
+        code: s.toString(),
+        map: s.generateMap({ hires: true }),
+      }
+
+    }
+
+    return code
+  },
+}
+
+/**
  * Include *.twig files in unocss scanning.
  */
 export const scanTwig: Plugin = {

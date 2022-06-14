@@ -15,6 +15,5 @@ const menuItems = useMenu('main')
 </template>
 
 <style>
-@unocss-placeholder {
-}
+@unocss-placeholder;
 </style>

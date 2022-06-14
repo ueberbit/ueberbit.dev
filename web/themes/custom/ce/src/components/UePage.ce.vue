@@ -29,7 +29,7 @@ defineProps<{
 </template>
 
 <style>
-@unocss-placeholder {}
+@unocss-placeholder;
 
 ::slotted(main) {
   flex-grow: 1;

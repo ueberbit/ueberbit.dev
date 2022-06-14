@@ -38,6 +38,5 @@ const handleSubmit = () => {
 </template>
 
 <style>
-@unocss-placeholder {
-}
+@unocss-placeholder;
 </style>
