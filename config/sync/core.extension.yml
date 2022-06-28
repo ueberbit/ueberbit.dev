@@ -17,10 +17,12 @@ module:
   content_moderation: 0
   ctools: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   default_content: 0
   dynamic_page_cache: 0
   editor: 0
+  external_entities: 0
   field: 0
   field_ui: 0
   file: 0
@@ -45,6 +47,8 @@ module:
   rest_menu_items: 0
   restui: 0
   search: 0
+  search_api: 0
+  search_api_db: 0
   serialization: 0
   shortcut: 0
   system: 0

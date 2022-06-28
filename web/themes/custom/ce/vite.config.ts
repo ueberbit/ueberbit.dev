@@ -1,6 +1,6 @@
 import path from 'path'
 import { defineConfig } from 'vite'
-import { presetAttributify, presetUno } from 'unocss'
+import { presetAttributify, presetTypography, presetUno } from 'unocss'
 import vue from '@vitejs/plugin-vue'
 import mkcert from 'vite-plugin-mkcert'
 import Unocss from 'unocss/vite'
@@ -36,6 +36,7 @@ export default defineConfig({
       presets: [
         presetAttributify({ /* options */ }),
         presetUno(),
+        presetTypography(),
       ],
       transformers: [
         transformerVariantGroup(),

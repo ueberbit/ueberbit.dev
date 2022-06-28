@@ -1,0 +1,15 @@
+_meta:
+  version: '1.0'
+  entity_type: path_alias
+  uuid: cf499d3a-37ba-4c8d-9dc9-dae80be766e5
+  default_langcode: und
+default:
+  path:
+    -
+      value: /jobs
+  alias:
+    -
+      value: /job
+  status:
+    -
+      value: true

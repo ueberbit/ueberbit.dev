@@ -1,0 +1,25 @@
+uuid: 9c1c748a-1181-49b8-96d9-1ea823edd38d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.job.job.field_absolute_url
+    - field.field.job.job.field_changed
+    - field.field.job.job.field_location
+    - field.field.job.job.field_rich_text
+    - field.field.job.job.field_teaser_text
+  module:
+    - external_entities
+id: job.job.default
+targetEntityType: job
+bundle: job
+mode: default
+content: {  }
+hidden:
+  field_absolute_url: true
+  field_changed: true
+  field_location: true
+  field_rich_text: true
+  field_teaser_text: true
+  search_api_excerpt: true
+  title: true

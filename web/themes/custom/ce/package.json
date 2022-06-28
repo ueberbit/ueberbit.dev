@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@unocss/inspector": "^0.38.2",
+    "@unocss/preset-typography": "^0.39.3",
     "@vitejs/plugin-vue": "^2.3.3",
     "unocss": "^0.38.2",
     "vite": "^2.9.11",

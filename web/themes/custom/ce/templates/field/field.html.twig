@@ -45,15 +45,17 @@
 %}
 
 {% set attributes = attributes|default(create_attribute()) %}
-{% set attributes = attributes.setAttribute('slot', field_name)  %}
+{% set attributes = attributes.setAttribute('slot', field_name|replace({'field_': '' }))  %}
 {% set attributes = attributes.setAttribute('label', label)  %}
-{% set attributes = attributes.setAttribute('label_hidden', label_hidden)  %}
+{% set attributes = attributes.setAttribute('label-hidden', label_hidden)  %}
+{% set attributes = attributes.setAttribute('type', field_type)  %}
 
-{% if field_type == 'text_with_summary' %}
-  {% set attributes = attributes.addClass('prose prose-slate lg:prose-lg')  %}
+{% if field_name == 'field_rich_text' or field_type == 'text_with_summary' %}
+  {% set attributes = attributes.addClass('prose prose-slate')  %}
 {% endif %}
 
-<field-{{ variant }} {{ attributes }}>
+{# <field-{{ variant }} {{ attributes }}> #}
+<{{ tagname }} {{ attributes }} >
   {% for item in items %}
 
     {# {% set item['attributes'] = item['attributes'].addClass('') %} #}
@@ -68,7 +70,8 @@
     </div>
     {% endif %}
   {% endfor %}
-</field-{{ variant }}>
+{# </field-{{ variant }}> #}
+</{{ tagname }}>
 
 
 {#

@@ -1,4 +1,6 @@
+uuid: 10d51c74-3e50-438d-b88e-c3f1467e668c
 langcode: en
+status: true
 dependencies:
   module:
     - responsive_image

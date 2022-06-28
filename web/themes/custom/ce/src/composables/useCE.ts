@@ -28,3 +28,29 @@ export const useSlotted = (name?: string) => {
     ? instance.host.querySelector(`[slot=${name}]`)
     : Array.from(instance.host.children).filter((child) => !child.hasAttribute('slot'))
 }
+
+export const useNamedSlots = () => {
+  const instance = getCurrentInstance() as CustomComponentInternalInstance
+  return Array.from(instance.host.querySelectorAll(`[slot]`)).reduce((a,c) => {
+    return {
+      ...a,
+      [c.getAttribute('slot') as string]: c
+    }
+  }, {})
+}
+
+export const useSlots = () => {
+  const instance = getCurrentInstance() as CustomComponentInternalInstance
+  const defaultSlot = Array.from(instance.host.querySelectorAll(`*:not([slot])`))
+  return Array.from(instance.host.querySelectorAll(`[slot]`)).reduce((a, c) => {
+    return {
+      ...a,
+      [c.getAttribute('slot') as string]: c
+    }
+  }, {
+    ...(defaultSlot.length && {
+      'default': defaultSlot
+  })
+  })
+}
+

@@ -33,7 +33,7 @@ const getTagname = (filename: string) => {
 /**
  * Import all vue ce and define them as custom elements.
  */
-const CustomElements = import.meta.globEager('./components/*.ce.vue')
+const CustomElements = import.meta.globEager('./components/**/*.ce.vue')
 Object.keys(CustomElements).forEach((ce) => {
   customElements.define(getTagname(ce), defineCustomElement(CustomElements[ce].default))
 })

@@ -135,14 +135,14 @@ export const transformHTML = (): Plugin => {
       config = resolvedConfig
     },
     transformIndexHtml(html) {
-      const code = html
-        .replace(/<head>/,`{% block head %}`)
-        .replace(/<body>/,`{% block body %}`)
-        .replace(/(<\/head>)|(<\/body>)/g,`{% endblock %}`)
-        .replace(/(<\/head>)|(<\/body>)/g,`{% endblock %}`)
-        .replace(/<!-- dev-start -->(.|\n)*<!-- dev-end -->/g, '')
-
-      return code
+      if (config.command === 'build') {
+        const code = html
+          .replace(/<head>/,`{% block head %}`)
+          .replace(/<body>/,`{% block body %}`)
+          .replace(/(<\/head>)|(<\/body>)/g,`{% endblock %}`)
+          .replace(/.*\/\/localhost:.*/g, '')
+        return code
+      }
     },
     buildStart() {
       if (config.command === 'serve') {
@@ -151,9 +151,9 @@ export const transformHTML = (): Plugin => {
           .toString()
           .replace(/<head>/,`{% block head %}`)
           .replace(/<body>/,`{% block body %}`)
+          .replace(/\/src\//g,`https://localhost:3000/src/`)
+          .replace(/<\/body>/g,`<script type="module" src="https://localhost:3000/@vite/client"></script>\n</body>`)
           .replace(/(<\/head>)|(<\/body>)/g,`{% endblock %}`)
-          .replace(/(<\/head>)|(<\/body>)/g,`{% endblock %}`)
-          .replace(/<!-- prod-start -->(.|\n)*<!-- prod-end -->/g, '')
         writeFileSync('./dist/index.html', code)
       }
     }

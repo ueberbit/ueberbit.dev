@@ -1,0 +1,21 @@
+uuid: f3dfbd85-8004-480a-961a-abfa4101a95e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.job.field_rich_text
+  module:
+    - external_entities
+    - text
+id: job.job.field_rich_text
+field_name: field_rich_text
+entity_type: job
+bundle: job
+label: 'Rich Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

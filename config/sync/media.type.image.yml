@@ -1,9 +1,10 @@
+uuid: 8c1b67ea-a889-40a7-81de-81b116156a8a
 langcode: en
 status: true
 dependencies: {  }
 id: image
 label: Image
-description: "Use local images for reusable media."
+description: 'Use local images for reusable media.'
 source: image
 queue_thumbnail_downloads: false
 new_revision: true

@@ -18,13 +18,16 @@
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drupal/default_content": "^2.0@alpha",
+        "drupal/external_entities": "^2.0@alpha",
         "drupal/gin": "^3.0@beta",
         "drupal/gin_login": "^1.2",
         "drupal/gin_toolbar": "^1.0@beta",
         "drupal/pathauto": "^1.10",
         "drupal/rest_menu_items": "^3.0",
         "drupal/restui": "^1.20",
+        "drupal/search_api": "^1.23",
         "drupal/twig_tweak": "^3.1",
+        "drupal/xnttmanager": "^1.0@beta",
         "drush/drush": "^11.0"
     },
     "require-dev": {
@@ -56,6 +59,9 @@
             "drupal/core": {
                 "Add custom element tagname variable to templates.": "patches/custom_elements_tagname.patch",
                 "Add open in vscode link": "patches/vscode_link.patch"
+            },
+            "drupal/external_entities": {
+                "Remove wrapper array": "https://www.drupal.org/files/issues/2019-07-03/2988391-3-views_rest_support.patch"
             }
         },
         "drupal-scaffold": {

@@ -1,0 +1,21 @@
+uuid: fa73136e-1c94-4b14-8c16-c6f4763f1a4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.job.field_teaser_text
+  module:
+    - external_entities
+    - text
+id: job.job.field_teaser_text
+field_name: field_teaser_text
+entity_type: job
+bundle: job
+label: 'Teaser Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

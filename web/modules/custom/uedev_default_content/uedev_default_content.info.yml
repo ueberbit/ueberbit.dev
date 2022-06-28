@@ -36,3 +36,6 @@ default_content:
     - 57989d48-3e83-4788-96ad-ba6e4b25ee3e
     ## Impressum
     - 6128dd92-44bd-410e-9011-e0e29fbb4590
+  path_alias:
+    # jobs
+    - cf499d3a-37ba-4c8d-9dc9-dae80be766e5
