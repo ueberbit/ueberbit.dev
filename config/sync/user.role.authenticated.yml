@@ -8,6 +8,7 @@ dependencies:
   module:
     - comment
     - contact
+    - external_entities
     - filter
     - media
     - rest
@@ -30,4 +31,6 @@ permissions:
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
+  - 'view job external entity'
+  - 'view job external entity collection'
   - 'view media'

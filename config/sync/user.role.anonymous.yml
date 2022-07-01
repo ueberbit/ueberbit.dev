@@ -8,6 +8,7 @@ dependencies:
   module:
     - comment
     - contact
+    - external_entities
     - filter
     - media
     - rest
@@ -26,4 +27,6 @@ permissions:
   - 'restful get rest_menu_item'
   - 'search content'
   - 'use text format restricted_html'
+  - 'view job external entity'
+  - 'view job external entity collection'
   - 'view media'
