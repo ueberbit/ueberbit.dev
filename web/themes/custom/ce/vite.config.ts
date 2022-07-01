@@ -26,6 +26,16 @@ export default defineConfig({
       presets: [
         presetAttributify({ /* options */ }),
         presetUno(),
+        presetTypography({
+          cssExtend: {
+            'pre': {
+              'background': 'var(--un-prose-pre-bg) !important',
+            },
+            'pre > code': {
+              'color': 'var(--un-prose-pre-code)',
+            }
+          }
+        }),
       ],
       transformers: [
         transformerVariantGroup(),
@@ -36,7 +46,7 @@ export default defineConfig({
       presets: [
         presetAttributify({ /* options */ }),
         presetUno(),
-        presetTypography(),
+        // presetTypography(),
       ],
       transformers: [
         transformerVariantGroup(),

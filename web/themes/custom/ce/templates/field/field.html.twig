@@ -51,7 +51,7 @@
 {% set attributes = attributes.setAttribute('type', field_type)  %}
 
 {% if field_name == 'field_rich_text' or field_type == 'text_with_summary' %}
-  {% set attributes = attributes.addClass('prose prose-slate')  %}
+  {# {% set attributes = attributes.addClass('prose prose-slate')  %} #}
 {% endif %}
 
 {# <field-{{ variant }} {{ attributes }}> #}
@@ -73,31 +73,3 @@
 {# </field-{{ variant }}> #}
 </{{ tagname }}>
 
-
-{#
-{% if label_hidden %}
-  {% if multiple %}
-    <field-{{ variant }} {{ attributes }}>
-      {% for item in items %}
-        <div{{ item.attributes }}>{{ item.content }}</div>
-      {% endfor %}
-    </field-{{ variant }}>
-  {% else %}
-    {% for item in items %}
-      <field-{{ variant }} {{ attributes }}>{{ item.content }}</field-{{ variant }}>
-    {% endfor %}
-  {% endif %}
-{% else %}
-  <field-{{ variant }} {{ attributes }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-    {% if multiple %}
-      <div>
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
-  </field-{{ variant }}>
-{% endif %} #}
