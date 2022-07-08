@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: 671ccefc-9b1e-4fd7-a1d3-e2087b4914bf
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    6128dd92-44bd-410e-9011-e0e29fbb4590: node
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: Impressum
+  menu_name:
+    -
+      value: footer
+  link:
+    -
+      target_uuid: 6128dd92-44bd-410e-9011-e0e29fbb4590
+      title: ''
+      options: {  }
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: false
+  weight:
+    -
+      value: 0
+  expanded:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true

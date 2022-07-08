@@ -33,3 +33,9 @@ self.site.yml
 
 # Generated Files
 /**/node_modules
+/**/dist
+.eslintcache
+.pnpm-debug.log
+
+db.sql
+/web/themes/custom/ce/tailwind.config.js

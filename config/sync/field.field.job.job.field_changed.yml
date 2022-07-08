@@ -1,0 +1,21 @@
+uuid: b6330480-2172-40bc-905a-5c1ca1734050
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.job.field_changed
+  module:
+    - datetime
+    - external_entities
+id: job.job.field_changed
+field_name: field_changed
+entity_type: job
+bundle: job
+label: Changed
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

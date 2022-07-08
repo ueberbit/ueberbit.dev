@@ -1,0 +1,68 @@
+uuid: f5eff594-2901-4bc0-b360-cfcf0a49ab5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.job.full
+    - field.field.job.job.field_absolute_url
+    - field.field.job.job.field_changed
+    - field.field.job.job.field_location
+    - field.field.job.job.field_rich_text
+    - field.field.job.job.field_teaser_text
+  module:
+    - datetime
+    - external_entities
+    - link
+    - text
+id: job.job.full
+targetEntityType: job
+bundle: job
+mode: full
+content:
+  field_absolute_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_changed:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_location:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_rich_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_teaser_text: true
+  search_api_excerpt: true

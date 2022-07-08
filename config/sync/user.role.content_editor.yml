@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.safe_html
     - node.type.article
     - node.type.page
     - taxonomy.vocabulary.tags
   module:
     - comment
     - file
+    - filter
     - node
     - path
     - system
@@ -39,6 +41,7 @@ permissions:
   - 'edit own page content'
   - 'edit terms in tags'
   - 'revert all revisions'
+  - 'use text format safe_html'
   - 'view all revisions'
   - 'view own unpublished content'
   - 'view the administration theme'

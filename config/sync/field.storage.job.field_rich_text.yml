@@ -1,0 +1,19 @@
+uuid: 4efff58a-eb31-40bf-9c03-a2f07f8a8410
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_entities
+    - text
+id: job.field_rich_text
+field_name: field_rich_text
+entity_type: job
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: e15a1328-7c22-4620-b69c-9b8f227acd7d
+langcode: en
+status: true
+dependencies:
+  module:
+    - rest_menu_items
+    - serialization
+    - user
+id: rest_menu_item
+plugin_id: rest_menu_item
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

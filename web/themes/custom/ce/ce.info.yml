@@ -1,0 +1,16 @@
+name: Custom Elements
+type: theme
+'base theme': false
+description: 'Adds custom element tags to templates.'
+package: Core
+core_version_requirement: ^8.8 || ^9
+screenshot: public/pwa-512x512.png
+libraries:
+  - ce/core
+regions:
+  header: Header
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  tools: Tools
+  content: Content
+  footer: Footer

@@ -1,0 +1,53 @@
+uuid: 943f10aa-cbe7-47dd-bb6c-50c85bb4743e
+langcode: en
+status: true
+dependencies: {  }
+id: job
+label: Job
+label_plural: Jobs
+description: 'External entity for fetching jobs from ueberbit.de'
+read_only: true
+field_mapper_id: simple
+field_mapper_config:
+  field_mappings:
+    id:
+      value: nid
+    uuid:
+      value: uuid
+    title:
+      value: title
+    field_absolute_url:
+      uri: url
+      title: title
+    field_changed:
+      value: changed
+    field_location:
+      value: location
+    field_rich_text:
+      value: text
+      format: +full_html
+    field_teaser_text:
+      value: text
+      format: +safe_html
+storage_client_id: rest
+storage_client_config:
+  endpoint: 'https://ueberbit.de/api/jobs'
+  response_format: json
+  pager:
+    default_limit: '50'
+    page_parameter: ''
+    page_parameter_type: null
+    page_size_parameter: ''
+    page_size_parameter_type: null
+  single_response_in_array: true
+  api_key:
+    header_name: ''
+    key: ''
+  parameters:
+    list: {  }
+    single: {  }
+persistent_cache_max_age: 0
+annotation_entity_type_id: null
+annotation_bundle_id: null
+annotation_field_name: null
+inherits_annotation_fields: false

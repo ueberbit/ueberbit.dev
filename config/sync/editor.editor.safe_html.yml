@@ -1,0 +1,17 @@
+uuid: 4702ac65-2552-4740-bc91-7397aca9394c
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.safe_html
+  module:
+    - ckeditor5
+format: safe_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - bold
+      - italic
+  plugins: {  }
+image_upload: {  }

@@ -4,10 +4,14 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
+    - rest.resource.rest_menu_item
   module:
     - comment
     - contact
+    - external_entities
     - filter
+    - media
+    - rest
     - search
     - system
 _core:
@@ -20,5 +24,9 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
+  - 'restful get rest_menu_item'
   - 'search content'
   - 'use text format restricted_html'
+  - 'view job external entity'
+  - 'view job external entity collection'
+  - 'view media'

@@ -1,0 +1,21 @@
+uuid: cc602de2-9807-4c2a-9c01-6d1e556742e7
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_entities
+id: job.field_location
+field_name: field_location
+entity_type: job
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

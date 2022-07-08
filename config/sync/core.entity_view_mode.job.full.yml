@@ -1,0 +1,10 @@
+uuid: 16f6dc26-e2e6-45ac-9cc8-ff754cf61057
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_entities
+id: job.full
+label: Full
+targetEntityType: job
+cache: true

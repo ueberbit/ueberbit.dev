@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display an external entity.
+ *
+ * Available variables:
+ * - entity: The external entity.
+*/
+#}
+
+{% extends "@ce/content/node.html.twig" %}
+
+ {% set tagname = [
+  tagname_prefix,
+  'node',
+  bundle,
+  elements['#view_mode']|trim
+]|join('-') %}
+
+
+{% block vars %}
+  {% set attributes = attributes.setAttribute('title', external_entity.title.value|trim)  %}
+  {% set attributes = attributes.setAttribute('url', '/' ~ entity_type ~ '/' ~ external_entity.id.value )  %}
+  {% set attributes = attributes.setAttribute('view-mode', elements['#view_mode']|trim)  %}
+  {% set attributes = attributes.setAttribute('bundle', bundle)  %}
+{% endblock %}

@@ -1,0 +1,13 @@
+/* @layer reset, uno; */
+
+:not(:defined) {
+  display: block;
+}
+
+html {
+  @apply bg-[#F7F7F7];
+}
+
+html.dark {
+  color-scheme: dark;
+}

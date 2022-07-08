@@ -1,0 +1,81 @@
+uuid: 33ed2bb0-9dc1-41d6-88a4-a43803ffa954
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.job.field_location
+    - field.storage.job.field_rich_text
+    - search_api.server.database_search
+  module:
+    - external_entities
+    - node
+    - search_api
+id: content
+name: Content
+description: ''
+read_only: false
+field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  field_location:
+    label: Location
+    datasource_id: 'entity:job'
+    property_path: field_location
+    type: string
+    dependencies:
+      config:
+        - field.storage.job.field_location
+  field_rich_text:
+    label: 'Rich Text'
+    datasource_id: 'entity:job'
+    property_path: field_rich_text
+    type: text
+    dependencies:
+      config:
+        - field.storage.job.field_rich_text
+  job_title:
+    label: Title
+    datasource_id: 'entity:job'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - external_entities
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:job': {  }
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  entity_type: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  index_directly: true
+  track_changes_in_references: true
+server: database_search

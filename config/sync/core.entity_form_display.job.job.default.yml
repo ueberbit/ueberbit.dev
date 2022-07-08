@@ -1,0 +1,67 @@
+uuid: b7e11662-59b1-4b93-85e6-17f999da03a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.job.job.field_absolute_url
+    - field.field.job.job.field_changed
+    - field.field.job.job.field_location
+    - field.field.job.job.field_rich_text
+    - field.field.job.job.field_teaser_text
+  module:
+    - datetime
+    - external_entities
+    - link
+    - text
+id: job.job.default
+targetEntityType: job
+bundle: job
+mode: default
+content:
+  field_absolute_url:
+    type: link_default
+    weight: -2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_changed:
+    type: datetime_default
+    weight: -1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_location:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_rich_text:
+    type: text_textarea
+    weight: -3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_teaser_text:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

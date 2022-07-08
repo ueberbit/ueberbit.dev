@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 6128dd92-44bd-410e-9011-e0e29fbb4590
+  bundle: page
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Impressum
+  created:
+    -
+      value: 1655206431
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  path:
+    -
+      alias: /impressum
+      langcode: en
+      pathauto: 1

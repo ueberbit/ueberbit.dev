@@ -1,0 +1,43 @@
+name: UEDEV Default Content
+type: module
+description: Provides default content
+package: uedev
+core_version_requirement: ^9 || ^10
+
+dependencies:
+  - uedev:uedev_core
+
+default_content:
+  menu_link_content:
+    # Menu Socials
+    ## Facebook
+    - 8f0ffaf3-6151-4f6e-9e1c-d4bdd9f34b04
+    ## Instagram
+    - ccce2d8c-ef9f-426f-98c3-8acb24aab936
+    ## LinkedIn
+    - d9caa942-e60e-401e-ad99-a643dc25ac49
+    # Menu Main
+    ## Dev Block
+    - dd57d758-0ae7-4676-8833-1a178c2d0f74
+    ## Open Source
+    - 3049719e-8f8d-477a-ae7f-abf8a2a4d83a
+    ## Events
+    - 7bcceb9f-b56c-415d-b368-8a024cd066b7
+    ## Recruiting
+    - 180d037f-d9ed-49c1-b95a-86a0446bca70
+    # Menu Footer
+    ## Privacy
+    - 03e4abc4-1ccf-42fa-8a0d-2f107b8069c9
+    ## Impressum
+    - 671ccefc-9b1e-4fd7-a1d3-e2087b4914bf
+  node:
+    # Basic Page
+    ## Privacy
+    - 57989d48-3e83-4788-96ad-ba6e4b25ee3e
+    ## Impressum
+    - 6128dd92-44bd-410e-9011-e0e29fbb4590
+    ## Typography
+    - b96d6c5c-b931-468b-9641-ed4f68429251
+  # path_alias:
+  #   # jobs
+  #   - cf499d3a-37ba-4c8d-9dc9-dae80be766e5

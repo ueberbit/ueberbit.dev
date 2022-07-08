@@ -1,0 +1,10 @@
+uuid: 927ac544-e453-4c1c-9483-a0f9dce6d8f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_entities
+id: job.teaser
+label: Teaser
+targetEntityType: job
+cache: true

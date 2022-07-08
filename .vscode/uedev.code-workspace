@@ -1,0 +1,124 @@
+{
+  "folders": [
+    {
+      "name": "/",
+      "path": "../"
+    },
+    {
+      "name": "themes",
+      "path": "../web/themes/custom/ce"
+    },
+    {
+      "name": "modules",
+      "path": "../web/modules/custom"
+    }
+  ],
+  "settings": {
+    /* Exclude from search */
+    "search.exclude": {
+      "**/dist": true,
+    },
+
+    /* Hide from Explorer */
+    "files.exclude": {
+      "**/node_modules": true,
+      "vendor": true
+    },
+
+    "prettier.enable": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+
+    /* General Editor Settings */
+    "editor.autoIndent": "advanced",
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrapColumn": 130,
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "editor.rulers": [130],
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "css.validate": false,
+
+    "explorer.fileNesting.patterns": {
+      "tsconfig.json": "tsconfig.*.json",
+      "package.json": "package-lock.json, yarn.lock, .node-version, pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
+      "composer.json": "composer.lock, .php-version",
+      ".editorconfig": ".gitignore, .gitattributes",
+    },
+
+    /* File associations */
+    "files.associations": {
+      "*.inc": "php",
+      "*.module": "php",
+      "*.install": "php",
+      "*.theme": "php",
+      "*.tpl.php": "php",
+      "*.test": "php",
+      "*.php": "php",
+      "*.info": "ini",
+      "*.html": "twig"
+    },
+
+    "css.customData": ["./.vscode/css-data.json"],
+
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+
+    "unocss.root": "web/themes/custom/ce",
+
+    /* PHPCBF */
+    "phpsab.fixerEnable": true,
+    "phpsab.snifferEnable": true,
+    "phpsab.executablePathCS": "./vendor/bin/phpcs",
+    "phpsab.executablePathCBF": "./vendor/bin/phpcbf",
+    "phpsab.standard": "./.vscode/ruleset.xml",
+    "phpsab.snifferMode": "onType",
+    "phpsab.debug": true,
+
+    /* pnpm */
+    "npm.packageManager": "pnpm",
+    "eslint.packageManager": "pnpm",
+
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "mblode.twig-language-2",
+      "xdebug.php-debug",
+      "bmewburn.vscode-intelephense-client",
+      "valeryanm.vscode-phpsab",
+      "editorconfig.editorconfig",
+      "antfu.iconify"
+    ]
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "XDebug 9003 Docker",
+        "type": "php",
+        "request": "launch",
+        "port": 9003,
+        "pathMappings": {
+          "/Sites/${workspaceFolderBasename:/}": "${workspaceFolder:/}/",
+        },
+        "ignore": [
+          "**/web/core/**/*"
+        ]
+      },
+      {
+        "name": "XDebug 9000",
+        "type": "php",
+        "request": "launch",
+        "port": 9000,
+        "ignore": [
+          "**/web/core/**/*"
+        ]
+      }
+    ],
+    "compounds": []
+  }
+}

@@ -1,0 +1,17 @@
+uuid: da745030-e3bd-473a-8831-6b6553f40e57
+langcode: en
+status: true
+dependencies: {  }
+name: 'Safe HTML'
+format: safe_html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <strong> <em>'
+      filter_html_help: true
+      filter_html_nofollow: false

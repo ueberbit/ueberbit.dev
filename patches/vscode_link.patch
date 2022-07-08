@@ -1,0 +1,13 @@
+diff --git a/core/themes/engines/twig/twig.engine b/core/themes/engines/twig/twig.engine
+index bcc984a02e..6b2031cc8f 100644
+--- a/core/themes/engines/twig/twig.engine
++++ b/core/themes/engines/twig/twig.engine
+@@ -104,6 +104,8 @@ function twig_render_template($template_file, array $variables) {
+     }
+     $output['debug_info']   .= "\n<!-- BEGIN OUTPUT from '" . Html::escape($template_file) . "' -->\n";
+     $output['debug_suffix'] .= "\n<!-- END OUTPUT from '" . Html::escape($template_file) . "' -->\n\n";
++    $working_dir = getcwd();
++    $variables['theme_hook_original'] != 'html' && $output['debug_suffix'] .= "\n <a href='vscode://file/{$working_dir}/{$template_file}' style='display:none!important;'></a>";
+   }
+   // This output has already been rendered and is therefore considered safe.
+   return Markup::create(implode('', $output));

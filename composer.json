@@ -4,6 +4,12 @@
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://ueberbit.de",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
     "require": {
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.1",
@@ -11,10 +17,22 @@
         "drupal/core-composer-scaffold": "^9.3",
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
+        "drupal/default_content": "^2.0@alpha",
+        "drupal/external_entities": "^2.0@alpha",
         "drupal/gin": "^3.0@beta",
         "drupal/gin_login": "^1.2",
         "drupal/gin_toolbar": "^1.0@beta",
+        "drupal/pathauto": "^1.10",
+        "drupal/rest_menu_items": "^3.0",
+        "drupal/restui": "^1.20",
+        "drupal/search_api": "^1.23",
+        "drupal/twig_tweak": "^3.1",
+        "drupal/xnttmanager": "^1.0@beta",
         "drush/drush": "^11.0"
+    },
+    "require-dev": {
+        "cweagans/composer-patches": "^1.7",
+        "drupal/core-dev": "^9.3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -22,14 +40,30 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "platform": {
+            "php": "8.1"
+        },
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
-            "drupal/core-project-message": true
+            "drupal/core-project-message": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "Add custom element tagname variable to templates.": "patches/custom_elements_tagname.patch",
+                "Add open in vscode link": "patches/vscode_link.patch"
+            },
+            "drupal/external_entities": {
+                "Remove wrapper array": "https://www.drupal.org/files/issues/2019-07-03/2988391-3-views_rest_support.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
