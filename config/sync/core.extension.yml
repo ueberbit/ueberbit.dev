@@ -10,7 +10,6 @@ module:
   breakpoint: 0
   ckeditor5: 0
   coffee: 0
-  color: 0
   comment: 0
   config: 0
   contact: 0
@@ -37,6 +36,7 @@ module:
   media_library: 0
   menu_link_content: 0
   menu_ui: 0
+  mysql: 0
   node: 0
   options: 0
   page_cache: 0

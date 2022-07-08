@@ -14,7 +14,9 @@
   ],
   "scripts": {
     "postinstall": "git config core.hooksPath ./hooks/git",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "update:drupal:core": "composer update \"drupal/core-*\" --with-all-dependencies",
+    "update:drupal:modules": "composer update \"drupal/*\" --with-all-dependencies --working"
   },
   "keywords": [],
   "license": "ISC",

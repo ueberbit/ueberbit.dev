@@ -2,16 +2,6 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Update Drupal Core",
-      "command": "composer",
-      "args": ["update drupal/core \"drupal/core-*\" --with-all-dependencies"],
-    },
-    {
-      "label": "Update Drupal Modules",
-      "command": "composer",
-      "args": ["update drupal/core \"drupal/*\" --with-all-dependencies"],
-    },
-    {
       "label": "Build FE",
       "command": "pnpm",
       "args": ["build"],
