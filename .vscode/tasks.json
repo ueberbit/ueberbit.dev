@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build FE",
+      "command": "pnpm",
+      "args": ["build"],
+    },
+    {
+      "label": "Update npm packages",
+      "command": "pnpm",
+      "args": ["i"],
+    },
+    {
+      "label": "Update composer packages",
+      "command": "composer",
+      "args": ["install"],
+    },
+    {
+      "label": "Update",
+      "dependsOn": ["Update composer packages", "Update npm packages"]
+    }
+  ]
+}
