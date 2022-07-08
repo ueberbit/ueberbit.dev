@@ -19,16 +19,16 @@ jobs:
           php-version: '8.1'
 
       # Setup Node
-      # - name: Setup Node
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: '18'
-      #     registry-url: https://registry.npmjs.org/
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          registry-url: https://registry.npmjs.org/
 
-      # - name: Install pnpm
-      #   uses: pnpm/action-setup@v2
-      #   with:
-      #     version: 6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
 
       # Setup Docker
       - name: Set up QEMU
@@ -57,17 +57,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      # - name: Cache npm dependencies
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.pnpm-store
-      #     key: ${{ runner.os }}-npm-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-npm-
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
 
       # BUILD
       - name: Install Drupal
         run: composer install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+
+      - name: Build FE
+        run: pnpm build
 
       # DEPLOY
       - name: Build and push
