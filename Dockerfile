@@ -6,6 +6,9 @@ RUN chmod a+w /app/web/sites/default
 RUN mkdir -p /app/web/sites/default/files /app/web/sites/default/private
 RUN chmod 777 /app/web/sites/default/files /app/web/sites/default/private
 
+RUN mkdir -p /backup
+RUN chmod 777 /backup
+
 VOLUME [ "/app" ]
 
 WORKDIR /app
