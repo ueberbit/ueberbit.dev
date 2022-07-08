@@ -36,3 +36,6 @@ self.site.yml
 /**/dist
 .eslintcache
 .pnpm-debug.log
+
+db.sql
+/web/themes/custom/ce/tailwind.config.js
