@@ -13,7 +13,8 @@
     }
   ],
   "scripts": {
-    "postinstall": "git config core.hooksPath ./hooks/git"
+    "postinstall": "git config core.hooksPath ./hooks/git",
+    "build": "pnpm -r build"
   },
   "keywords": [],
   "license": "ISC",
