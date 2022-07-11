@@ -57,7 +57,6 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
-                "Add custom element tagname variable to templates.": "patches/custom_elements_tagname.patch",
                 "Add open in vscode link": "patches/vscode_link.patch"
             },
             "drupal/external_entities": {

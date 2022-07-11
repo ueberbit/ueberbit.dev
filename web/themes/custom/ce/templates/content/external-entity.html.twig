@@ -17,7 +17,6 @@
   elements['#view_mode']|trim
 ]|join('-') %}
 
-
 {% block vars %}
   {% set attributes = attributes.setAttribute('title', external_entity.title.value|trim)  %}
   {% set attributes = attributes.setAttribute('url', '/' ~ entity_type ~ '/' ~ external_entity.id.value )  %}

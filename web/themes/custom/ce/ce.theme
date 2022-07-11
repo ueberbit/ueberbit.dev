@@ -11,7 +11,8 @@ define('TAG_PREFIX', 'ue');
 /**
  * Implements hook_preprocess().
  */
-function ce_preprocess(&$variables): void {
+function ce_preprocess(&$variables, $hook): void {
   // Add custom element tag prefix.
   $variables['tagname_prefix'] = TAG_PREFIX;
+  $variables['tagname'] = TAG_PREFIX . '-' . str_replace('_', '-', $hook);
 }
