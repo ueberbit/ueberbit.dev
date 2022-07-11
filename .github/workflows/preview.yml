@@ -67,7 +67,13 @@ jobs:
 
       # BUILD
       - name: Install Drupal
-        run: composer install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+        run: composer install --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader
+
+      - name: Install NPM dependencies
+        run: pnpm i
+
+      - name: Build FE
+        run: pnpm build
 
       - name: Install NPM dependencies
         run: pnpm i
